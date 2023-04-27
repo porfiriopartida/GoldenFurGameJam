@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 9116676238908376042}
   - component: {fileID: 5253225934421574283}
   m_Layer: 3
-  m_Name: Model (1)
+  m_Name: SlidingModel
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5aeb6f447a4a03b6a03c92609d9075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMesh: {fileID: 0}
-  slidingMesh: {fileID: 0}
+  defaultMesh: {fileID: 6117921281182662086}
+  slidingMesh: {fileID: 5982310129553064674}
   whatIsObstacle:
     serializedVersion: 2
     m_Bits: 128
@@ -387,13 +387,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1
+  m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1 &6117921281182662087
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6117921281182662086
 Transform:
   m_ObjectHideFlags: 0
