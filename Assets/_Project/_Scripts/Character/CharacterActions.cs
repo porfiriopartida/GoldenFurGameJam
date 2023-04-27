@@ -385,21 +385,23 @@ namespace GoldenFur.Character
         #region Sliding
         private bool _isSliding = false;
         private float _nextSlideCheck;
-        
+        // public float currentTime;
         public void Slide()
         {
             Debug.Log("Sliding");
             _isSliding = true;
-            _nextSlideCheck = Time.time + motionParameters.slideDuration;
+            _nextSlideCheck = motionParameters.slideDuration;
         }
         
         private void SlideUpdate()
         {
+            // currentTime = Time.time;
             _nextSlideCheck -= Time.deltaTime;
             if (_nextSlideCheck < 0)
             {
                 _isSliding = false;
             }
+            // Debug.Log($"Is Sliding : {_isSliding} - Next: {_nextSlideCheck} - Time: {currentTime}");
         }
         #endregion
     }
