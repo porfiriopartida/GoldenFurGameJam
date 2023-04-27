@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GoldenFur.ScriptableObjects
+namespace GoldenFur.ScriptableObjects.Primitives
 {
     [CreateAssetMenu(fileName = "Float", menuName = "GoldenFur/Primitives/Float")]
     public class FloatValue : ScriptableObject

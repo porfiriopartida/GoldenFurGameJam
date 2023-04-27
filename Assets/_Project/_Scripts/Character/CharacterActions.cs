@@ -3,6 +3,7 @@ using GoldenFur.Common;
 using GoldenFur.Event;
 using GoldenFur.Manager;
 using GoldenFur.ScriptableObjects;
+using GoldenFur.ScriptableObjects.Primitives;
 using UnityEngine;
 
 namespace GoldenFur.Character
@@ -10,9 +11,9 @@ namespace GoldenFur.Character
     [RequireComponent(typeof(DirectionAttribute), typeof(CharacterController))]
     public class CharacterActions : MonoBehaviour
     {
-        //Layers
-        [SerializeField]
-        private LayerMask whatIsGround;
+        // //Layers
+        // [SerializeField]
+        // private LayerMask whatIsGround;
         [SerializeField]
         public LayerMask whatIsObstacle;
         
@@ -85,10 +86,22 @@ namespace GoldenFur.Character
 
                 // Debug.Log($"Setting player state. from {this._innerState} to {value}");
                 this._innerState = value;
+
+                UpdateCollider();
             }
         }
 
-        // private bool _canMove = true; //TODO: Remove if not used, placeholder for partial stop when hit
+        private void UpdateCollider()
+        {
+            var param = PlayerState switch
+            {
+                PlayerState.Sliding => motionParameters.defaultCollisionParameters,
+                _ => motionParameters.defaultCollisionParameters
+            };
+            _characterController.height = param.collisionParameters.height;
+            _characterController.radius = param.collisionParameters.radius;
+            _characterController.center = param.collisionParameters.center;
+        }
         private void Start()
         {
             
@@ -97,18 +110,6 @@ namespace GoldenFur.Character
             directionAttribute = GetComponent<DirectionAttribute>();
             _characterController = GetComponent<CharacterController>();
             // animator = GetComponent<Animator>();
-        }
-        private void OnApplicationQuit()
-        {
-            Dispose();
-        }
-        private void Dispose()
-        {
-            // mainCamera = null;        
-        }
-        private void OnDestroy()
-        {
-            Dispose();
         }
         private void Update()
         {
@@ -388,9 +389,12 @@ namespace GoldenFur.Character
         // public float currentTime;
         public void Slide()
         {
+            //TODO: Check if Can slide
+            //TODO: add delay
             Debug.Log("Sliding");
             _isSliding = true;
             _nextSlideCheck = motionParameters.slideDuration;
+            PlayerState = PlayerState.Sliding;
         }
         
         private void SlideUpdate()
@@ -400,6 +404,7 @@ namespace GoldenFur.Character
             if (_nextSlideCheck < 0)
             {
                 _isSliding = false;
+                PlayerState = PlayerState.Grounded;
             }
             // Debug.Log($"Is Sliding : {_isSliding} - Next: {_nextSlideCheck} - Time: {currentTime}");
         }

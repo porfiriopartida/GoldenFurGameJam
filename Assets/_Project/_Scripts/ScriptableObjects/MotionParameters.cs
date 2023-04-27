@@ -3,7 +3,7 @@
 namespace GoldenFur.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "MotionParameters", menuName = "GoldenFur/Parameters/MotionParameters")]
-    public class MotionParameters : ScriptableObject
+    public partial class MotionParameters : ScriptableObject
     {
         [Header("Movement")]
         public float runSpeed = 2f;
@@ -40,5 +40,7 @@ namespace GoldenFur.ScriptableObjects
         public float bufferedJump;
         [Header("Sliding params")] public float slideDuration; // maybe animation based? tweakable.
         [Header("Collition values")] public float frontCollisionDetect;
+        public StateParams defaultCollisionParameters;
+        public StateParams slidingCollisionParameters;
     }
 }

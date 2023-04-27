@@ -241,9 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5aeb6f447a4a03b6a03c92609d9075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 384
   whatIsObstacle:
     serializedVersion: 2
     m_Bits: 128
