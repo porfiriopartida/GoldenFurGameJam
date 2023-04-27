@@ -1,3 +1,4 @@
+using ScriptableObjects;
 using UnityEngine;
 
 namespace Character
@@ -5,7 +6,7 @@ namespace Character
     [RequireComponent(typeof(Rigidbody))]
     public class Character : MonoBehaviour
     {
-        public float wide;
+        public FloatValue laneLength;
         public Vector3 direction;
         private Rigidbody _rigidbody;
         private Transform _characterPosition;
@@ -44,11 +45,11 @@ namespace Character
             var position = _characterPosition.position;
             if (right)
             {
-                position = new Vector3(position.x + wide, position.y, position.z);
+                position = new Vector3(position.x + laneLength.value, position.y, position.z);
             }
             else
             {
-                position = new Vector3(position.x - wide, position.y, position.z);
+                position = new Vector3(position.x - laneLength.value, position.y, position.z);
             }
             
             _characterPosition.position = position;

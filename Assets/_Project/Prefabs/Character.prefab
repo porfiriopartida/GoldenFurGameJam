@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2809d91b9c49147ba7c25f60eaf546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wide: 0
-  direction: {x: 0, y: 0, z: 10}
+  laneLength: {fileID: 11400000, guid: 800a8ad87fe5cdc48ba9c9ceef61fbe9, type: 2}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!54 &3463010237508428094
 Rigidbody:
   m_ObjectHideFlags: 0
