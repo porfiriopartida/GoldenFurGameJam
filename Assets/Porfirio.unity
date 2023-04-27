@@ -269,14 +269,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2028809461}
     m_Modifications:
-    - target: {fileID: 2446082544164086408, guid: 8901d5557547fc746a48d8837aebe965, type: 3}
-      propertyPath: winScore
-      value: 30000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446082544164086408, guid: 8901d5557547fc746a48d8837aebe965, type: 3}
-      propertyPath: gameOverReloadDelay
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7298096386856532746, guid: 8901d5557547fc746a48d8837aebe965, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -2632,6 +2624,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616635056}
   m_CullTransparentMesh: 1
+--- !u!4 &626919042 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6117921281182662086, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+  m_PrefabInstance: {fileID: 1994443148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &660452626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3661,7 +3658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5743075286691379377, guid: 4c506f0d2ad5c774daa50276a041f9a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -42.5
+      value: -32.78
       objectReference: {fileID: 0}
     - target: {fileID: 5743075286691379377, guid: 4c506f0d2ad5c774daa50276a041f9a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4268,6 +4265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HurdleJumpable (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5969479200747025333, guid: 383b5c351620e824697f885fccb6b439, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 383b5c351620e824697f885fccb6b439, type: 3}
 --- !u!1001 &1046660001
@@ -4722,7 +4723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1153555171
 Transform:
   m_ObjectHideFlags: 0
@@ -5168,6 +5169,10 @@ PrefabInstance:
     - target: {fileID: 3060511683569159680, guid: 4c506f0d2ad5c774daa50276a041f9a9, type: 3}
       propertyPath: m_Name
       value: HurdleSlidable (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060511683569159680, guid: 4c506f0d2ad5c774daa50276a041f9a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5743075286691379377, guid: 4c506f0d2ad5c774daa50276a041f9a9, type: 3}
       propertyPath: m_RootOrder
@@ -7807,6 +7812,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1994443150, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: defaultMesh
+      value: 
+      objectReference: {fileID: 626919042}
+    - target: {fileID: 1994443150, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: slidingMesh
+      value: 
+      objectReference: {fileID: 1994443150}
+    - target: {fileID: 1971630690015020544, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: m_Name
+      value: SlidingModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971630690015020544, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294949839110831788, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294949839110831788, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294949839110831788, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: m_Center.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6117921280409034891, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7851,19 +7884,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6117921280409034891, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6117921280409034892, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 6117921281182662087, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
 --- !u!4 &1994443149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6117921280409034891, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+  m_PrefabInstance: {fileID: 1994443148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1994443150 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5982310129553064674, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
   m_PrefabInstance: {fileID: 1994443148}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2027630906

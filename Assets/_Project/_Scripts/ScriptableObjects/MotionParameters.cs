@@ -40,7 +40,7 @@ namespace GoldenFur.ScriptableObjects
         public float bufferedJump;
         [Header("Sliding params")] public float slideDuration; // maybe animation based? tweakable.
         [Header("Collition values")] public float frontCollisionDetect;
-        public StateParams defaultCollisionParameters;
-        public StateParams slidingCollisionParameters;
+        public CollisionParameters defaultCollisionParameters;
+        public CollisionParameters slidingCollisionParameters;
     }
 }

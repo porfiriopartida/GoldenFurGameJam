@@ -11,64 +11,69 @@ namespace GoldenFur.Character
     [RequireComponent(typeof(DirectionAttribute), typeof(CharacterController))]
     public class CharacterActions : MonoBehaviour
     {
+        public Transform defaultMesh;
+        public Transform slidingMesh;
+
         // //Layers
         // [SerializeField]
         // private LayerMask whatIsGround;
-        [SerializeField]
-        public LayerMask whatIsObstacle;
-        
-        [Header("Empty object checkers")]
-        [SerializeField]
+        [SerializeField] public LayerMask whatIsObstacle;
+
+        [Header("Empty object checkers")] [SerializeField]
         private Transform frontChecker;
-        [SerializeField]
-        private Transform slidingFrontChecker;
-        [SerializeField]
-        private Transform characterGroundChecker;
-        
-        
-        [Header("Debug Fields")]
-        [SerializeField]
+
+        [SerializeField] private Transform slidingFrontChecker;
+        [SerializeField] private Transform characterGroundChecker;
+
+
+        [Header("Debug Fields")] [SerializeField]
         private bool isGrounded; // For debug view purposes
 
         [Header("Scene related objects")]
         // [SerializeField]
         // private Camera mainCamera;
         private CharacterController _characterController;
-        [Header("Parameters")]
-        [SerializeField]
+
+        [Header("Parameters")] [SerializeField]
         private MotionParameters motionParameters;
 
         [Header("Current state")]
-        #region Current state 
+
+        #region Current state
+
         [SerializeField]
         private DirectionAttribute directionAttribute;
+
         // private bool _jumpButtonIsHeld;
         public bool isJumpingAction;
         private float _lastInvalidJumpTime = float.MinValue; //For buffered jump corrections
+
         #endregion
+
         private float _coyoteTimeFalling; // For coyote timing corrections
 
         #region Animation parameters/triggers
+
         // private Animator animator;
         // private static readonly int HorizontalSpeed = Animator.StringToHash("horizontalSpeed");
         // private static readonly int JumpTrigger = Animator.StringToHash("Jump");
+
         #endregion
 
 
         #region Lane swap related
+
         private Lane _activeLane;
         public FloatValue laneLength;
         private float nextXPos;
+
         #endregion
 
         #region Audio
-        [Header("Audio")]
-        [SerializeField]
-        private AudioSource audioSource;
-        [SerializeField]
-        private AudioClip[] jumpClips;
-        [SerializeField]
-        private AudioClip[] hitClips;
+
+        [Header("Audio")] [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip[] jumpClips;
+        [SerializeField] private AudioClip[] hitClips;
 
         #endregion
 
@@ -93,33 +98,49 @@ namespace GoldenFur.Character
 
         private void UpdateCollider()
         {
-            var param = PlayerState switch
+            Debug.Log($"Updating Controller Collider to {_innerState}");
+            CollisionParameters param;
+            switch (PlayerState)
             {
-                PlayerState.Sliding => motionParameters.defaultCollisionParameters,
-                _ => motionParameters.defaultCollisionParameters
-            };
-            _characterController.height = param.collisionParameters.height;
-            _characterController.radius = param.collisionParameters.radius;
-            _characterController.center = param.collisionParameters.center;
+                case PlayerState.Sliding:
+                    param = motionParameters.slidingCollisionParameters;
+                    slidingMesh.gameObject.SetActive(true);
+                    defaultMesh.gameObject.SetActive(false);
+                    break;
+                default:
+                    param = motionParameters.defaultCollisionParameters;
+                    slidingMesh.gameObject.SetActive(false);
+                    defaultMesh.gameObject.SetActive(true);
+                    break;
+            }
+
+            _characterController.height = param.height;
+            _characterController.radius = param.radius;
+            _characterController.center = param.center;
         }
+
         private void Start()
         {
-            
+            slidingMesh.gameObject.SetActive(false);
+            defaultMesh.gameObject.SetActive(true);
             _activeLane = Lane.Center;
             // mainCamera = Camera.main;
             directionAttribute = GetComponent<DirectionAttribute>();
             _characterController = GetComponent<CharacterController>();
             // animator = GetComponent<Animator>();
         }
+
         private void Update()
         {
             #region Jump
+
             CheckBufferedJump();
             isGrounded = _characterController.isGrounded; //debug purposes only.
             //State
             CheckState();
+
             #endregion
-            
+
             //Movement
             MotionProcess();
             LaneSwappedCheck();
@@ -144,6 +165,7 @@ namespace GoldenFur.Character
                 _lastInvalidJumpTime = float.MinValue;
             }
         }
+
         private void CheckState()
         {
             if (this.PlayerState == PlayerState.StartJump)
@@ -152,6 +174,7 @@ namespace GoldenFur.Character
                 TriggerJump();
             }
         }
+
         private void MotionProcess()
         {
             FixZSpeed();
@@ -161,7 +184,7 @@ namespace GoldenFur.Character
 
         private void FixZSpeed()
         {
-            var zMovFactor = motionParameters.runSpeed; 
+            var zMovFactor = motionParameters.runSpeed;
             directionAttribute.direction.z = zMovFactor;
         }
 
@@ -169,12 +192,15 @@ namespace GoldenFur.Character
         {
             OnGroundedCleanUp();
         }
+
         private void OnGroundedCleanUp()
         {
             if (!_characterController.isGrounded) return;
-            
-            directionAttribute.direction.y = -.5f; //TODO: This line sometimes makes the jump to feel stuck to the floor level. Removing it causes the gravity to impact on free falls (falling w/o jumps)
+
+            directionAttribute.direction.y =
+                -.5f; //TODO: This line sometimes makes the jump to feel stuck to the floor level. Removing it causes the gravity to impact on free falls (falling w/o jumps)
         }
+
         private void ApplyGravity()
         {
             if (_characterController.isGrounded)
@@ -182,10 +208,11 @@ namespace GoldenFur.Character
                 //Stop falling on ground.
                 directionAttribute.direction.y = 0;
                 _coyoteTimeFalling = 0;
-                if (this.PlayerState != PlayerState.Grounded)
+                if (this.PlayerState != PlayerState.Grounded && PlayerState != PlayerState.Sliding)
                 {
                     this.PlayerState = PlayerState.Grounded;
                 }
+
                 return;
             }
 
@@ -195,11 +222,13 @@ namespace GoldenFur.Character
                 _coyoteTimeFalling = Time.time;
             }
 
-            if (PlayerState != PlayerState.Falling && directionAttribute.direction.y < 0)
+            if (PlayerState != PlayerState.Falling && directionAttribute.direction.y < 0 &&
+                PlayerState != PlayerState.Sliding)
             {
                 //Falling and unknown falling state.
                 this.PlayerState = PlayerState.Falling;
             }
+
             if (PlayerState != PlayerState.Jumping && directionAttribute.direction.y > 0)
             {
                 //Falling and unknown falling state.
@@ -231,13 +260,14 @@ namespace GoldenFur.Character
             //     directionAttribute.direction.y += motionParameters.lowJumpGravity * Time.deltaTime;
             // }
         }
-        
+
         #region public Character API
 
         // public LaneWorldPosValues LaneWorldPosValues;
         public bool _canMove = true;
         public bool _isMoving = true;
         public bool _lastDirection = true;
+
         public void MoveLane(bool isRight)
         {
             if (!CanMove(isRight))
@@ -247,7 +277,7 @@ namespace GoldenFur.Character
 
             var dir = isRight ? Vector3.right : Vector3.left;
             var xMovFactor = motionParameters.laneSwapSpeed;
-            directionAttribute.direction.x = dir.x * xMovFactor;// * Time.deltaTime;
+            directionAttribute.direction.x = dir.x * xMovFactor; // * Time.deltaTime;
             var localLaneLength = this.laneLength.value;
             nextXPos = this.transform.position.x + (isRight ? localLaneLength : -localLaneLength);
             _canMove = false;
@@ -257,6 +287,7 @@ namespace GoldenFur.Character
             // Debug.Log($"dir: {dir} -- isRight: {isRight}");
             // Debug.Log($"localLaneLength: {localLaneLength}");
         }
+
         private void LaneSwappedCheck()
         {
             var charTransform = transform;
@@ -283,14 +314,16 @@ namespace GoldenFur.Character
             if (isRight)
             {
                 //Character Transform has something to the right?
-                if (_activeLane == Lane.Right || Physics.Raycast(position, Vector3.right, laneLength.value, whatIsObstacle))
+                if (_activeLane == Lane.Right ||
+                    Physics.Raycast(position, Vector3.right, laneLength.value, whatIsObstacle))
                 {
                     return true;
                 }
             }
             else
             {
-                if (_activeLane == Lane.Left || Physics.Raycast(position, Vector3.left, laneLength.value, whatIsObstacle))
+                if (_activeLane == Lane.Left ||
+                    Physics.Raycast(position, Vector3.left, laneLength.value, whatIsObstacle))
                 {
                     return true;
                 }
@@ -306,7 +339,7 @@ namespace GoldenFur.Character
             LevelSceneManager.Instance.PlayerHit();
             CharacterEventManager.Instance.OnPlayerHit();
         }
-        
+
         private bool CanMove(bool isRight)
         {
             if (!_canMove)
@@ -323,14 +356,16 @@ namespace GoldenFur.Character
 
             return true;
         }
+
         public void Jump()
         {
             // _jumpButtonIsHeld = performed;
             // if (!performed)
             // {
-                // return;
+            // return;
             // }
-            var isCoyoteTiming = !isJumpingAction && Math.Abs(Time.time - _coyoteTimeFalling) < motionParameters.coyoteFactor;
+            var isCoyoteTiming = !isJumpingAction &&
+                                 Math.Abs(Time.time - _coyoteTimeFalling) < motionParameters.coyoteFactor;
             //Coyote time calculation
             if (!_characterController.isGrounded
                 && motionParameters.jumpingRequiresGround
@@ -341,62 +376,72 @@ namespace GoldenFur.Character
                 _lastInvalidJumpTime = Time.time;
                 return;
             }
+
             this.PlayerState = PlayerState.StartJump;
         }
+
         private void TriggerJump()
         {
             isJumpingAction = true;
             // airJumpsLeft--;
-            var jumpSpeed = motionParameters.jumpSpeed; 
+            var jumpSpeed = motionParameters.jumpSpeed;
             //_characterController.isGrounded ? motionParameters.jumpSpeed : motionParameters.airJumpSpeed;
             directionAttribute.direction.y = jumpSpeed;
             SoundManager.Instance.PlaySfx(audioSource, jumpClips);
         }
 
         #endregion
-        
+
         private void OnDrawGizmos()
         {
             var charGroundPos = characterGroundChecker.position;
             Debug.DrawRay(charGroundPos, Vector3.down * .5f, Color.yellow);
             Debug.DrawRay(charGroundPos, Vector3.left * laneLength.value, Color.green);
             Debug.DrawRay(charGroundPos, Vector3.right * laneLength.value, Color.green);
-            
+
             Debug.DrawRay(frontChecker.position, Vector3.forward * motionParameters.frontCollisionDetect, Color.red);
-            
-            Debug.DrawRay(slidingFrontChecker.position, Vector3.forward * motionParameters.frontCollisionDetect, Color.red);
+
+            Debug.DrawRay(slidingFrontChecker.position, Vector3.forward * motionParameters.frontCollisionDetect,
+                Color.red);
         }
-        
-        
+
 
         private void CheckFrontHitObstacle()
         {
             //Validate if front collision
-            if (!_isSliding && Physics.Raycast(this.frontChecker.position, Vector3.forward, motionParameters.frontCollisionDetect, whatIsObstacle))
+            if (!_isSliding && Physics.Raycast(this.frontChecker.position, Vector3.forward,
+                motionParameters.frontCollisionDetect, whatIsObstacle))
             {
+                CharacterEventManager.Instance.OnPlayerHit();
+                LevelSceneManager.Instance.PlayerHit();
                 LevelSceneManager.Instance.GameOver(false);
             }
             //Validate if front collision while sliding
-            else if (_isSliding && Physics.Raycast(this.slidingFrontChecker.position, Vector3.forward, motionParameters.frontCollisionDetect, whatIsObstacle))
+            else if (_isSliding && Physics.Raycast(this.slidingFrontChecker.position, Vector3.forward,
+                motionParameters.frontCollisionDetect, whatIsObstacle))
             {
                 LevelSceneManager.Instance.GameOver(false);
             }
         }
 
         #region Sliding
+
         private bool _isSliding = false;
+
         private float _nextSlideCheck;
+
         // public float currentTime;
         public void Slide()
         {
-            //TODO: Check if Can slide
-            //TODO: add delay
+            if (PlayerState != PlayerState.Grounded || !_characterController.isGrounded)
+                return; // can't slide if regular ground state.
+
             Debug.Log("Sliding");
             _isSliding = true;
             _nextSlideCheck = motionParameters.slideDuration;
             PlayerState = PlayerState.Sliding;
         }
-        
+
         private void SlideUpdate()
         {
             // currentTime = Time.time;
@@ -408,7 +453,7 @@ namespace GoldenFur.Character
             }
             // Debug.Log($"Is Sliding : {_isSliding} - Next: {_nextSlideCheck} - Time: {currentTime}");
         }
+
         #endregion
     }
-    
 }

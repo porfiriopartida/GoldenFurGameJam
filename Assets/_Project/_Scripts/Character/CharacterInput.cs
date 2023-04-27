@@ -22,7 +22,8 @@ namespace GoldenFur.Character
             var dPressed = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
             var jumpPressed = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space);
             //Windows controller, Mac would be alt?
-            var crouchPressed = Input.GetKeyDown(KeyCode.LeftControl);
+            var crouchPressed = Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftControl);
+            var escPressed = Input.GetKeyDown(KeyCode.Escape);
             
             //Can only move left or right 
             if (aPressed)
@@ -42,6 +43,12 @@ namespace GoldenFur.Character
             if (crouchPressed)
             {
                 characterActions.Slide();
+            }
+            
+            
+            if (escPressed)
+            {
+                LevelSceneManager.Instance.TogglePause();
             }
         }
 

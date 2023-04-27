@@ -25,3 +25,5 @@ MonoBehaviour:
   bufferedJump: 0.05
   slideDuration: 1
   frontCollisionDetect: 0.5
+  defaultCollisionParameters: {fileID: 11400000, guid: d4c77c9c75549a943a3e9766f49a217d, type: 2}
+  slidingCollisionParameters: {fileID: 11400000, guid: 69570c962574dd44abc54c41ac1975b7, type: 2}
