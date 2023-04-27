@@ -48,4 +48,5 @@ MonoBehaviour:
   IsSfxOn: {fileID: 11400000, guid: 90b6f4f05beb2ad47acb951e58955b5b, type: 2}
   defaultSfxAudioSource: {fileID: 0}
   backgroundAudioSource: {fileID: 0}
-  bgClips: []
+  bgClips:
+  - {fileID: 8300000, guid: 35cca3a66af19694aafd91f8806ff0d1, type: 3}

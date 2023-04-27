@@ -8,8 +8,11 @@ namespace GoldenFur.Manager
     
     public class LevelSceneManager : Singleton<LevelSceneManager>
     {
+        //For external usages purposes (e.g. silence the input)
+        [Header("Level State")] public bool isGameRunning = true;
+        
         [Header("Win Condition")]
-        public float winScore = 100f;
+        public float winScore = 250f;
         [Header("Time in seconds to reload the game after win/lose condition is met")]
         public float gameOverReloadDelay = 3f;
         
@@ -53,6 +56,11 @@ namespace GoldenFur.Manager
 
         private void Update()
         {
+            if (!isGameRunning)
+            {
+                return;
+            }
+
             //Checks if the win condition was met last frame.
             CheckWinCondition();
             
@@ -125,14 +133,16 @@ namespace GoldenFur.Manager
             Debug.Log("Showing monster.");
         }
 
-        private void GameOver(bool isWinCondition)
+        public void GameOver(bool isWinCondition)
         {
+            isGameRunning = false;
             if (isWinCondition)
             {
                 Debug.Log("You win!");
             }
             else
             {
+                //TODO: Show monster if hidden -> Animate capture. 
                 Debug.Log("You lose!");
             }
 

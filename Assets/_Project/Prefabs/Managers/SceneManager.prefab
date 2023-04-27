@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae33dee347c54a61a6b0d10f51f4d248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameRunning: 1
+  winScore: 250
+  gameOverReloadDelay: 3
   maxHp: 3
   hp: 1
   monsterShowsOnHp: 1

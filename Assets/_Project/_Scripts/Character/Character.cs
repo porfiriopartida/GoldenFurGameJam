@@ -29,6 +29,10 @@ namespace GoldenFur.Character
         private Transform characterGroundChecker;
         public bool isGrounded;
 
+        [Header("Front collision checker")]
+        [SerializeField]
+        private Transform frontChecker;
+        
         [Header("Audio")]
         [SerializeField]
         private AudioSource audioSource;
@@ -49,9 +53,27 @@ namespace GoldenFur.Character
         }
         private void Update()
         {
+            if (!LevelSceneManager.Instance.isGameRunning)
+            {
+                //TODO: Maybe use observer instead, many things may want to know about game over situations.
+                return;
+            }
+
             FixZSpeed();
 
             InputCheck();
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Obstacle"))
+            {
+                //Validate if front collision
+                if (Physics.Raycast(this.frontChecker.position, Vector3.forward, 0.1f, whatIsObstacle))
+                {
+                    LevelSceneManager.Instance.GameOver(false);
+                }
+            }
         }
 
         private void FixedUpdate()

@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1d328a6b2348adabc0cc94406ef233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinScoreAmount: 15
   coinScore: 0
+  currentScore: 0

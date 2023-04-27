@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &664074183315499623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7443479896406944059}
+  m_Layer: 3
+  m_Name: FrontChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7443479896406944059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664074183315499623}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.599, z: 0.508}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6117921280409034891}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3064151908797505227
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +73,6 @@ GameObject:
   - component: {fileID: 6117921280409034891}
   - component: {fileID: 6117921280409034890}
   - component: {fileID: 3463010237508428094}
-  - component: {fileID: 4776634116378595698}
   - component: {fileID: 6244061610015744204}
   - component: {fileID: 580050353}
   m_Layer: 3
@@ -66,6 +96,7 @@ Transform:
   m_Children:
   - {fileID: 6117921281182662086}
   - {fileID: 2135039687983498618}
+  - {fileID: 7443479896406944059}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,18 +112,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2809d91b9c49147ba7c25f60eaf546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 384
   laneLength: {fileID: 11400000, guid: 800a8ad87fe5cdc48ba9c9ceef61fbe9, type: 2}
-  zSpeed: 15
+  zSpeed: 20
   jumpForce: 400
   whatIsGround:
     serializedVersion: 2
     m_Bits: 384
   characterGroundChecker: {fileID: 2135039687983498618}
   isGrounded: 0
+  frontChecker: {fileID: 7443479896406944059}
   audioSource: {fileID: 580050353}
   jumpClips:
   - {fileID: 8300000, guid: a0dabba40f8583e428b1bbee623e1d30, type: 3}
   - {fileID: 8300000, guid: 4b634680dc3cc2c49a3821682d487e43, type: 3}
+  hitClips:
+  - {fileID: 8300000, guid: ed9d5e5ac69a92a4dbe4b6dd07267f2e, type: 3}
+  - {fileID: 8300000, guid: f7b3a8be8b1e7bc4da86998bb881b87b, type: 3}
+  - {fileID: 8300000, guid: 0ce184d46f1d00e4784be929a4f3542c, type: 3}
+  - {fileID: 8300000, guid: c88e7860fd1e0744a895c183152fab29, type: 3}
 --- !u!54 &3463010237508428094
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -109,20 +149,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 114
   m_CollisionDetection: 0
---- !u!136 &4776634116378595698
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6117921280409034892}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6244061610015744204
 BoxCollider:
   m_ObjectHideFlags: 0
