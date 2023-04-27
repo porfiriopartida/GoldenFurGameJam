@@ -71,10 +71,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6117921280409034891}
-  - component: {fileID: 6117921280409034890}
-  - component: {fileID: 3463010237508428094}
-  - component: {fileID: 6244061610015744204}
   - component: {fileID: 580050353}
+  - component: {fileID: 1994443150}
+  - component: {fileID: 1994443152}
+  - component: {fileID: 1994443153}
+  - component: {fileID: 3294949839110831788}
   m_Layer: 3
   m_Name: Character
   m_TagString: Untagged
@@ -100,68 +101,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6117921280409034890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6117921280409034892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2809d91b9c49147ba7c25f60eaf546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 384
-  laneLength: {fileID: 11400000, guid: 800a8ad87fe5cdc48ba9c9ceef61fbe9, type: 2}
-  zSpeed: 20
-  jumpForce: 400
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 384
-  characterGroundChecker: {fileID: 2135039687983498618}
-  isGrounded: 0
-  frontChecker: {fileID: 7443479896406944059}
-  audioSource: {fileID: 580050353}
-  jumpClips:
-  - {fileID: 8300000, guid: a0dabba40f8583e428b1bbee623e1d30, type: 3}
-  - {fileID: 8300000, guid: 4b634680dc3cc2c49a3821682d487e43, type: 3}
-  hitClips:
-  - {fileID: 8300000, guid: ed9d5e5ac69a92a4dbe4b6dd07267f2e, type: 3}
-  - {fileID: 8300000, guid: f7b3a8be8b1e7bc4da86998bb881b87b, type: 3}
-  - {fileID: 8300000, guid: 0ce184d46f1d00e4784be929a4f3542c, type: 3}
-  - {fileID: 8300000, guid: c88e7860fd1e0744a895c183152fab29, type: 3}
---- !u!54 &3463010237508428094
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6117921280409034892}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 114
-  m_CollisionDetection: 0
---- !u!65 &6244061610015744204
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6117921280409034892}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.733894, z: 1}
-  m_Center: {x: 0, y: -0.15537399, z: 0}
 --- !u!82 &580050353
 AudioSource:
   m_ObjectHideFlags: 0
@@ -258,6 +197,86 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1994443150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117921280409034892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5aeb6f447a4a03b6a03c92609d9075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 384
+  whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 128
+  frontChecker: {fileID: 7443479896406944059}
+  characterGroundChecker: {fileID: 2135039687983498618}
+  isGrounded: 0
+  motionParameters: {fileID: 11400000, guid: 9dc79949640b78b4fb1bb6f513ff8904, type: 2}
+  directionAttribute: {fileID: 1994443152}
+  isJumpingAction: 0
+  laneLength: {fileID: 11400000, guid: 800a8ad87fe5cdc48ba9c9ceef61fbe9, type: 2}
+  laneSwapThreshold: {fileID: 11400000, guid: b2488b5bf2ce7764fa47c86d8123f4d7, type: 2}
+  audioSource: {fileID: 580050353}
+  jumpClips:
+  - {fileID: 8300000, guid: 4b634680dc3cc2c49a3821682d487e43, type: 3}
+  - {fileID: 8300000, guid: a0dabba40f8583e428b1bbee623e1d30, type: 3}
+  hitClips:
+  - {fileID: 8300000, guid: ed9d5e5ac69a92a4dbe4b6dd07267f2e, type: 3}
+  - {fileID: 8300000, guid: f7b3a8be8b1e7bc4da86998bb881b87b, type: 3}
+  - {fileID: 8300000, guid: 0ce184d46f1d00e4784be929a4f3542c, type: 3}
+  - {fileID: 8300000, guid: c88e7860fd1e0744a895c183152fab29, type: 3}
+  _canMove: 1
+--- !u!114 &1994443152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117921280409034892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a211563a10c44d78a129903e78c488ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+--- !u!114 &1994443153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117921280409034892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6f25fdab0d4a7cad0c573dd82f46a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterActions: {fileID: 1994443150}
+--- !u!143 &3294949839110831788
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117921280409034892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6117921281182662087
 GameObject:
   m_ObjectHideFlags: 0

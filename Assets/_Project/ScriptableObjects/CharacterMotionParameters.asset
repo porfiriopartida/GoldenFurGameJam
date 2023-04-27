@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8581773dc3f34e37971491618fb5d1f4, type: 3}
+  m_Name: CharacterMotionParameters
+  m_EditorClassIdentifier: 
+  runSpeed: 30
+  laneSwapSpeed: 20
+  laneSwapThreshold: 0.5
+  jumpSpeed: 12
+  jumpingRequiresGround: 1
+  goingUpGravity: -33
+  lowJumpGravity: -30
+  lowJumpSprintingGravity: -30
+  apexGravity: -30
+  peakReachedFallingGravity: -30
+  heightPeakThreshold: 0.1
+  coyoteFactor: 0
+  bufferedJump: 0

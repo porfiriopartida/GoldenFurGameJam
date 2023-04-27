@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3328815323373125311}
   - component: {fileID: 3540546421217201866}
   - component: {fileID: 2305636447167446180}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: RightEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5879985858221655945}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3328815323373125311
 MeshFilter:
@@ -95,7 +95,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 13.47, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5777544728458179077
 GameObject:
@@ -109,8 +109,8 @@ GameObject:
   - component: {fileID: 3260477680657480341}
   - component: {fileID: 7475772682845026035}
   - component: {fileID: 6898497497990763164}
-  m_Layer: 8
-  m_Name: RightEdge (1)
+  m_Layer: 7
+  m_Name: LeftEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 13.47, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5879985858221655950
 GameObject:
@@ -222,8 +222,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7931096654186174994}
   - {fileID: 4529832644632732915}
+  - {fileID: 7931096654186174994}
   - {fileID: 413320768531691601}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -260,7 +260,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5879985858221655945}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6115888958297374176
 MeshFilter:

@@ -1,5 +1,6 @@
 ﻿using GoldenFur.Common;
 using GoldenFur.ScriptableObjects;
+using GoldenFur.ScriptableObjects.Primitives;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
