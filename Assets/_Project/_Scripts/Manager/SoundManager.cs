@@ -90,5 +90,15 @@ namespace GoldenFur.Manager
         {
             this.PlaySfx(this.defaultSfxAudioSource, clips);
         }
+
+        public void ToggleAudio()
+        {
+            this.IsMusicOn.value = !this.IsMusicOn.value;
+        }
+
+        public void ToggleSfx()
+        {
+            this.IsSfxOn.value = !this.IsSfxOn.value;
+        }
     }
 }

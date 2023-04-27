@@ -34,6 +34,12 @@ namespace GoldenFur.Character
         private AudioSource audioSource;
         [SerializeField]
         private AudioClip[] jumpClips;
+        [SerializeField]
+        private AudioClip[] hitClips;
+        // [SerializeField]
+        // private AudioClip[] slideClips;
+        // [SerializeField]
+        // private AudioClip[] laneSwapClips;
 
         private void Start()
         {
@@ -140,7 +146,8 @@ namespace GoldenFur.Character
 
         private void RegisterDamage()
         {
-            Debug.Log("Hit Something!");
+            SoundManager.Instance.PlaySfx(audioSource, hitClips);
+            LevelSceneManager.Instance.PlayerHit();
         }
     }
 }

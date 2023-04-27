@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae33dee347c54a61a6b0d10f51f4d248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 3
+  hp: 1
+  monsterShowsOnHp: 1
+  monsterHidesOnHp: 3
+  scoreAmount: 1
+  scoreUpDelay: 0.1
+  hpUpDelay: 4
