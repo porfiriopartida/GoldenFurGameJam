@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8581773dc3f34e37971491618fb5d1f4, type: 3}
-  m_Name: CharacterMotionParameters
+  m_Name: CharacterParameters
   m_EditorClassIdentifier: 
   runSpeed: 30
   laneSwapSpeed: 20
   laneSwapThreshold: 0.5
   jumpSpeed: 12
   jumpingRequiresGround: 1
-  goingUpGravity: -33
-  lowJumpGravity: -30
-  lowJumpSprintingGravity: -30
-  apexGravity: -30
-  peakReachedFallingGravity: -30
+  goingUpGravity: -40
+  apexGravity: -60
+  peakReachedFallingGravity: -10
   heightPeakThreshold: 0.1
-  coyoteFactor: 0
-  bufferedJump: 0
+  coyoteFactor: 0.1
+  bufferedJump: 0.05
+  slideDuration: 0.5
+  frontCollisionDetect: 0.5

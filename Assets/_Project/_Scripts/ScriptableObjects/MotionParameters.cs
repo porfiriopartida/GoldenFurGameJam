@@ -5,7 +5,7 @@ namespace GoldenFur.ScriptableObjects
     [CreateAssetMenu(fileName = "MotionParameters", menuName = "GoldenFur/Parameters/MotionParameters")]
     public class MotionParameters : ScriptableObject
     {
-        [Header("Horizontal Movement")]
+        [Header("Movement")]
         public float runSpeed = 2f;
         public float laneSwapSpeed = 2f;
         public float laneSwapThreshold = 2f;
@@ -28,8 +28,8 @@ namespace GoldenFur.ScriptableObjects
         
         [Header("Gravity values")]
         public float goingUpGravity = -12f;
-        public float lowJumpGravity = -30f;
-        public float lowJumpSprintingGravity = -20f;
+        // public float lowJumpGravity = -30f;
+        // public float lowJumpSprintingGravity = -20f;
         public float apexGravity = -10f;
         public float peakReachedFallingGravity = -15f;
         public float heightPeakThreshold = .1f;
@@ -38,5 +38,7 @@ namespace GoldenFur.ScriptableObjects
         [Header("Player correction factors")] 
         public float coyoteFactor;
         public float bufferedJump;
+        [Header("Sliding params")] public float slideDuration; // maybe animation based? tweakable.
+        [Header("Collition values")] public float frontCollisionDetect;
     }
 }

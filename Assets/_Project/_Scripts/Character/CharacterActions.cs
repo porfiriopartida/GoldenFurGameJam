@@ -20,8 +20,10 @@ namespace GoldenFur.Character
         [SerializeField]
         private Transform frontChecker;
         [SerializeField]
+        private Transform slidingFrontChecker;
+        [SerializeField]
         private Transform characterGroundChecker;
-
+        
         
         [Header("Debug Fields")]
         [SerializeField]
@@ -39,7 +41,7 @@ namespace GoldenFur.Character
         #region Current state 
         [SerializeField]
         private DirectionAttribute directionAttribute;
-        private bool _jumpButtonIsHeld;
+        // private bool _jumpButtonIsHeld;
         public bool isJumpingAction;
         private float _lastInvalidJumpTime = float.MinValue; //For buffered jump corrections
         #endregion
@@ -123,6 +125,7 @@ namespace GoldenFur.Character
 
             //Lose Condition - hit an obstacle with the face.
             CheckFrontHitObstacle();
+            SlideUpdate();
         }
 
         private void CheckBufferedJump()
@@ -222,10 +225,10 @@ namespace GoldenFur.Character
             }
 
             //Reduce time to reach apex.
-            if (!_jumpButtonIsHeld && isJumpingAction && this.PlayerState == PlayerState.Jumping)
-            {
-                directionAttribute.direction.y += motionParameters.lowJumpGravity * Time.deltaTime;
-            }
+            // if (!_jumpButtonIsHeld && isJumpingAction && this.PlayerState == PlayerState.Jumping)
+            // {
+            //     directionAttribute.direction.y += motionParameters.lowJumpGravity * Time.deltaTime;
+            // }
         }
         
         #region public Character API
@@ -319,13 +322,13 @@ namespace GoldenFur.Character
 
             return true;
         }
-        public void Jump(bool performed)
+        public void Jump()
         {
-            _jumpButtonIsHeld = performed;
-            if (!performed)
-            {
-                return;
-            }
+            // _jumpButtonIsHeld = performed;
+            // if (!performed)
+            // {
+                // return;
+            // }
             var isCoyoteTiming = !isJumpingAction && Math.Abs(Time.time - _coyoteTimeFalling) < motionParameters.coyoteFactor;
             //Coyote time calculation
             if (!_characterController.isGrounded
@@ -344,8 +347,9 @@ namespace GoldenFur.Character
             isJumpingAction = true;
             // airJumpsLeft--;
             var jumpSpeed = motionParameters.jumpSpeed; 
-                //_characterController.isGrounded ? motionParameters.jumpSpeed : motionParameters.airJumpSpeed;
+            //_characterController.isGrounded ? motionParameters.jumpSpeed : motionParameters.airJumpSpeed;
             directionAttribute.direction.y = jumpSpeed;
+            SoundManager.Instance.PlaySfx(audioSource, jumpClips);
         }
 
         #endregion
@@ -357,7 +361,9 @@ namespace GoldenFur.Character
             Debug.DrawRay(charGroundPos, Vector3.left * laneLength.value, Color.green);
             Debug.DrawRay(charGroundPos, Vector3.right * laneLength.value, Color.green);
             
-            Debug.DrawRay(frontChecker.position, Vector3.forward * .5f, Color.red);
+            Debug.DrawRay(frontChecker.position, Vector3.forward * motionParameters.frontCollisionDetect, Color.red);
+            
+            Debug.DrawRay(slidingFrontChecker.position, Vector3.forward * motionParameters.frontCollisionDetect, Color.red);
         }
         
         
@@ -365,11 +371,37 @@ namespace GoldenFur.Character
         private void CheckFrontHitObstacle()
         {
             //Validate if front collision
-            if (Physics.Raycast(this.frontChecker.position, Vector3.forward, 0.1f, whatIsObstacle))
+            if (!_isSliding && Physics.Raycast(this.frontChecker.position, Vector3.forward, motionParameters.frontCollisionDetect, whatIsObstacle))
+            {
+                LevelSceneManager.Instance.GameOver(false);
+            }
+            //Validate if front collision while sliding
+            else if (_isSliding && Physics.Raycast(this.slidingFrontChecker.position, Vector3.forward, motionParameters.frontCollisionDetect, whatIsObstacle))
             {
                 LevelSceneManager.Instance.GameOver(false);
             }
         }
+
+        #region Sliding
+        private bool _isSliding = false;
+        private float _nextSlideCheck;
+        
+        public void Slide()
+        {
+            Debug.Log("Sliding");
+            _isSliding = true;
+            _nextSlideCheck = Time.time + motionParameters.slideDuration;
+        }
+        
+        private void SlideUpdate()
+        {
+            _nextSlideCheck -= Time.deltaTime;
+            if (_nextSlideCheck < 0)
+            {
+                _isSliding = false;
+            }
+        }
+        #endregion
     }
     
 }

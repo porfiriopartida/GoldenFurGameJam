@@ -1,16 +1,17 @@
 using GoldenFur.ScriptableObjects;
 using UnityEngine;
 
-namespace GoldenFur.Collectible
+namespace GoldenFur.Common
 {
     public class Spinning : MonoBehaviour
     {
         public FloatValue speed;
         public Transform meshTransform;
+        public Vector3 dir = Vector3.up;
 
         void Update()
         {
-            meshTransform.Rotate(Vector3.up, speed.value * Time.deltaTime);
+            meshTransform.Rotate(dir, speed.value * Time.deltaTime);
         }
     }
 }

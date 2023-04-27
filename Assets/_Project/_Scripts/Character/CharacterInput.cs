@@ -23,7 +23,6 @@ namespace GoldenFur.Character
             var jumpPressed = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space);
             //Windows controller, Mac would be alt?
             var crouchPressed = Input.GetKeyDown(KeyCode.LeftControl);
-            var crouchReleased = Input.GetKeyUp(KeyCode.LeftControl); //in case we want to handle low jump
             
             //Can only move left or right 
             if (aPressed)
@@ -36,12 +35,13 @@ namespace GoldenFur.Character
 
             if (jumpPressed)
             {
-                characterActions.Jump(!crouchReleased);
+                // characterActions.Jump(!crouchReleased);
+                characterActions.Jump();
             } 
 
             if (crouchPressed)
             {
-                //characterActions.Slide();
+                characterActions.Slide();
             }
         }
 
