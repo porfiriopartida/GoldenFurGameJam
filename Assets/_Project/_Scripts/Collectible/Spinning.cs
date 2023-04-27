@@ -1,7 +1,7 @@
-using ScriptableObjects;
+using GoldenFur.ScriptableObjects;
 using UnityEngine;
 
-namespace Common
+namespace GoldenFur.Collectible
 {
     public class Spinning : MonoBehaviour
     {

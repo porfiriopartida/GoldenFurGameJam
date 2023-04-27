@@ -1,7 +1,7 @@
-﻿using ScriptableObjects;
+﻿using GoldenFur.ScriptableObjects;
 using UnityEngine;
 
-namespace Character
+namespace GoldenFur.Character
 {
     public class CameraFollow : MonoBehaviour
     {
