@@ -17,10 +17,11 @@ namespace GoldenFur
         void Start(){
           //  player.zSpeed=0f;
             ScoreManager.Instance.active= false;
+            SpawnStars.SetActive(false);
         }
 
         void Update(){
-            Debug.Log("Tutorial.Update");
+            // Debug.Log("Tutorial.Update");
             if(popUpIndex == 0){
                 popUps[0].SetActive(true);
                 if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)){

@@ -447,7 +447,7 @@ namespace GoldenFur.Character
 
             Debug.Log("Sliding");
             _isSliding = true;
-            _nextSlideCheck = Time.time + motionParameters.slideDuration;
+            _nextSlideCheck = motionParameters.slideDuration;
             PlayerState = PlayerState.Sliding;
         }
 
@@ -458,8 +458,8 @@ namespace GoldenFur.Character
             {
                 _isSliding = false;
                 PlayerState = PlayerState.Grounded;
-                Debug.Log($"Is Sliding : {_isSliding} - Next: {_nextSlideCheck}");
             }
+            Debug.Log($"Is Sliding : {_isSliding} - Next: {_nextSlideCheck}");
         }
 
         #endregion
