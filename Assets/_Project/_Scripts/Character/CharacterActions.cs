@@ -181,7 +181,7 @@ namespace GoldenFur.Character
 
         private void MotionProcess()
         {
-            //if(!ScoreManager.Instance.active)return;
+            
             FixZSpeed();
             _characterController.Move(directionAttribute.direction * Time.deltaTime);
             ApplyGravity();
@@ -189,6 +189,7 @@ namespace GoldenFur.Character
 
         private void FixZSpeed()
         {
+            if(!ScoreManager.Instance.active)return;
             var zMovFactor = motionParameters.runSpeed;
             directionAttribute.direction.z = zMovFactor;
         }
@@ -269,7 +270,7 @@ namespace GoldenFur.Character
         #region public Character API
 
         // public LaneWorldPosValues LaneWorldPosValues;
-        public bool _canMove = true;
+        private bool _canMove = true;
         public bool _isMoving = true;
         public bool _lastDirection = true;
 
@@ -340,6 +341,7 @@ namespace GoldenFur.Character
 
         private void RegisterDamage()
         {
+            if(!ScoreManager.Instance.active)return;
             SoundManager.Instance.PlaySfx(audioSource, hitClips);
             LevelSceneManager.Instance.PlayerHit();
             CharacterEventManager.Instance.OnPlayerHit();
