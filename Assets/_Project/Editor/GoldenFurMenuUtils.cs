@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GoldenFur.Utils
 {
-    public class GoldenFurMenuUtils : Editor
+    public class GoldenFurMenuUtils : UnityEditor.Editor
     {
         [MenuItem( "GoldenFur/ResetTutorial" )]
         public static void ResetTutorial()

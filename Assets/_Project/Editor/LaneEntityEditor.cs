@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GoldenFur.Common
 {
     [CustomEditor(typeof(LaneEntity)), CanEditMultipleObjects]
-    public class LaneEntityEditor : Editor
+    public class LaneEntityEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {

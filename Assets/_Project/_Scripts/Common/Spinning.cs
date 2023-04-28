@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GoldenFur.Common
 {
-    public class Spinning : MonoBehaviour
+    public class Spinning : DirtableSo
     {
         public FloatValue speed;
         public Transform meshTransform;
