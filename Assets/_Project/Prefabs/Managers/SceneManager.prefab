@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameRunning: 1
-  winScore: 250
-  gameOverReloadDelay: 3
+  winScore: 30000
+  gameOverReloadDelay: 0
   maxHp: 3
   hp: 1
   monsterShowsOnHp: 1
@@ -54,3 +54,4 @@ MonoBehaviour:
   scoreAmount: 1
   scoreUpDelay: 0.1
   hpUpDelay: 4
+  TimeScale: {fileID: 11400000, guid: 13af4aec367fd784f8d898f9ea48a2c0, type: 2}

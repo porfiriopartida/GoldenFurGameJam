@@ -50,3 +50,6 @@ MonoBehaviour:
   backgroundAudioSource: {fileID: 0}
   bgClips:
   - {fileID: 8300000, guid: 35cca3a66af19694aafd91f8806ff0d1, type: 3}
+  MasterVolume: {fileID: 11400000, guid: 7ff9e98ddc8b31b43bac9d1fed406ba3, type: 2}
+  SFXVolume: {fileID: 11400000, guid: be7663ed8f857664e99f68d027450cf5, type: 2}
+  MusicVolume: {fileID: 11400000, guid: 82a0e6f6a1148344d91a61931c3669b2, type: 2}

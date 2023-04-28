@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using GoldenFur.Common;
+using GoldenFur.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,6 +34,9 @@ namespace GoldenFur.Manager
         //Delay to increase score just by existing.
         private float _nextScoreCheck = 0;
         private float _nextHpUp = 0;
+        public FloatValue TimeScale;
+        public GameObject tutorial;
+        
         private void Start()
         {
             _nextScoreCheck = scoreUpDelay;
@@ -40,18 +44,41 @@ namespace GoldenFur.Manager
             //TODO: Check if order of execution affects this (ScoreManager must load before scene manager)
             //Reset score and coins
             ScoreManager.Instance.ResetScore();
-            
             ShowMonster();
             Resume();
+            _isRunning = true;
+
+            var hasTutorialRun = PlayerPrefs.GetInt(PlayerPrefKeys.Has_Tutorial_Run_Key, 0);
+            if (hasTutorialRun == 0)
+            {
+                tutorial.SetActive(true);
+            }
         }
 
+
+        private float _originalTimeScale;
         private void Resume()
         {
-            Time.timeScale = 1;
+            Time.timeScale = TimeScale.value;
         }
         private void Pause()
         {
             Time.timeScale = 0;
+        }
+
+        private bool _isRunning;
+        public void TogglePause()
+        {
+            _isRunning = !_isRunning;
+            if (_isRunning)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+            //TODO: Show UI Options/Pause menu
         }
 
         private void Update()

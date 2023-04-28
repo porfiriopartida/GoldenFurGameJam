@@ -2,8 +2,8 @@
 {
     public enum Lane 
     {
-        LEFT,
-        CENTER,
-        RIGHT
+        Left,
+        Center,
+        Right
     }
 }
