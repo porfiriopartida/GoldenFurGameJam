@@ -1,4 +1,5 @@
-﻿using GoldenFur.Common;
+﻿using System;
+using GoldenFur.Common;
 using GoldenFur.ScriptableObjects;
 using GoldenFur.ScriptableObjects.Primitives;
 using UnityEngine;
@@ -20,6 +21,11 @@ namespace GoldenFur.Manager
         
         private int _activeClip = 0;
 
+        public FloatValue MasterVolume;
+        public FloatValue SFXVolume;
+        public FloatValue MusicVolume;
+        public AudioClip[] sampleBfxClips;
+        
         private AudioClip NextClip()
         {
             _activeClip++;
@@ -55,6 +61,20 @@ namespace GoldenFur.Manager
         public void Resume()
         {
             backgroundAudioSource.Play();
+            UpdateMusicVolume();
+        }
+
+        public void UpdateMusicVolume()
+        {
+            backgroundAudioSource.volume = MusicVolume.value * MasterVolume.value;
+            Debug.Log($"UpdateMusicVolume: {backgroundAudioSource.volume}");
+        }
+
+        //SFX have multiple sources.
+        public void UpdateSfxVolume(AudioSource src)
+        {
+            src.volume = SFXVolume.value * MasterVolume.value;
+            Debug.Log($"UpdateSfxVolume: {src.volume}");
         }
 
         public void PlayBackgroundMusic(AudioClip clip)
@@ -70,6 +90,7 @@ namespace GoldenFur.Manager
 
         public void PlaySfx(AudioSource src, AudioClip clip)
         {
+            UpdateSfxVolume(src);
             if (!IsSfxOn.value)
             {
                 return;
@@ -100,6 +121,16 @@ namespace GoldenFur.Manager
         public void ToggleSfx()
         {
             this.IsSfxOn.value = !this.IsSfxOn.value;
+        }
+
+        public void PlayRandomClip()
+        {
+            if (this.defaultSfxAudioSource.isPlaying)
+            {
+                return;
+            }
+
+            this.PlaySfx(this.defaultSfxAudioSource, sampleBfxClips);
         }
     }
 }

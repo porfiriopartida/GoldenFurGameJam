@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4650936107545099852
+--- !u!1 &4724451487548094523
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4650936107545099853}
-  - component: {fileID: 4650936107545099854}
+  - component: {fileID: 4724451487548094525}
+  - component: {fileID: 4724451487548094522}
+  - component: {fileID: 4724451487548094524}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: VolumeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4650936107545099853
+--- !u!4 &4724451487548094525
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4650936107545099852}
+  m_GameObject: {fileID: 4724451487548094523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.2355154, y: 0.19823557, z: -0.8825319}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4650936107545099854
+--- !u!114 &4724451487548094522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4650936107545099852}
+  m_GameObject: {fileID: 4724451487548094523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af29606b0874497480ac4e03ed41b733, type: 3}
+  m_Script: {fileID: 11500000, guid: e08e59952c1935c4db2406c04c6d0453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsMusicOn: {fileID: 11400000, guid: 3e5bfc89154e1c347b25aa41c88d1d08, type: 2}
-  IsSfxOn: {fileID: 11400000, guid: 90b6f4f05beb2ad47acb951e58955b5b, type: 2}
-  defaultSfxAudioSource: {fileID: 0}
-  backgroundAudioSource: {fileID: 0}
-  bgClips:
-  - {fileID: 8300000, guid: 35cca3a66af19694aafd91f8806ff0d1, type: 3}
+  NewGameLevel: MainMenu
+--- !u!114 &4724451487548094524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724451487548094523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d68dd8b5a860e74a82c1c77ebb417b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderMaster: {fileID: 0}
+  sliderMusica: {fileID: 0}
+  sliderSFX: {fileID: 0}
   MasterVolume: {fileID: 11400000, guid: 7ff9e98ddc8b31b43bac9d1fed406ba3, type: 2}
-  SFXVolume: {fileID: 11400000, guid: be7663ed8f857664e99f68d027450cf5, type: 2}
   MusicVolume: {fileID: 11400000, guid: 82a0e6f6a1148344d91a61931c3669b2, type: 2}
+  SFXVolume: {fileID: 11400000, guid: be7663ed8f857664e99f68d027450cf5, type: 2}
