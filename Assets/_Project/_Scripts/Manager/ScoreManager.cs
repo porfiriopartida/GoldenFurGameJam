@@ -5,6 +5,7 @@ namespace GoldenFur.Manager
 {
     public class ScoreManager : Singleton<ScoreManager>
     {
+        public bool active;
         [Header("How much points would a coin award")]
         public float coinScoreAmount;
         
@@ -25,7 +26,10 @@ namespace GoldenFur.Manager
 
         public void AddScore(float scoreAmount)
         {
-            this.currentScore += scoreAmount;
+            if(active){
+                this.currentScore += scoreAmount;
+            }
+            
         }
     }
 }

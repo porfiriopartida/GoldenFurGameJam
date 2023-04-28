@@ -3,7 +3,7 @@
 namespace GoldenFur.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "MotionParameters", menuName = "GoldenFur/Parameters/MotionParameters")]
-    public partial class MotionParameters : ScriptableObject
+    public class MotionParameters : ScriptableObject
     {
         [Header("Movement")]
         public float runSpeed = 2f;

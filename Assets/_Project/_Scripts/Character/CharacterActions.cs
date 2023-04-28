@@ -3,7 +3,6 @@ using GoldenFur.Common;
 using GoldenFur.Event;
 using GoldenFur.Manager;
 using GoldenFur.ScriptableObjects;
-using GoldenFur.ScriptableObjects.Primitives;
 using UnityEngine;
 
 namespace GoldenFur.Character
@@ -11,6 +10,7 @@ namespace GoldenFur.Character
     [RequireComponent(typeof(DirectionAttribute), typeof(CharacterController))]
     public class CharacterActions : MonoBehaviour
     {
+<<<<<<< Updated upstream
         public Transform defaultMesh;
         public Transform slidingMesh;
 
@@ -20,6 +20,16 @@ namespace GoldenFur.Character
         [SerializeField] public LayerMask whatIsObstacle;
 
         [Header("Empty object checkers")] [SerializeField]
+=======
+        //Layers
+        [SerializeField]
+        private LayerMask whatIsGround;
+        [SerializeField]
+        public LayerMask whatIsObstacle;
+        
+        [Header("Empty object checkers")]
+        [SerializeField]
+>>>>>>> Stashed changes
         private Transform frontChecker;
 
         [SerializeField] private Transform slidingFrontChecker;
@@ -91,11 +101,10 @@ namespace GoldenFur.Character
 
                 // Debug.Log($"Setting player state. from {this._innerState} to {value}");
                 this._innerState = value;
-
-                UpdateCollider();
             }
         }
 
+<<<<<<< Updated upstream
         private void UpdateCollider()
         {
             Debug.Log($"Updating Controller Collider to {_innerState}");
@@ -119,6 +128,9 @@ namespace GoldenFur.Character
             _characterController.center = param.center;
         }
 
+=======
+        // private bool _canMove = true; //TODO: Remove if not used, placeholder for partial stop when hit
+>>>>>>> Stashed changes
         private void Start()
         {
             slidingMesh.gameObject.SetActive(false);
@@ -129,7 +141,22 @@ namespace GoldenFur.Character
             _characterController = GetComponent<CharacterController>();
             // animator = GetComponent<Animator>();
         }
+<<<<<<< Updated upstream
 
+=======
+        private void OnApplicationQuit()
+        {
+            Dispose();
+        }
+        private void Dispose()
+        {
+            // mainCamera = null;        
+        }
+        private void OnDestroy()
+        {
+            Dispose();
+        }
+>>>>>>> Stashed changes
         private void Update()
         {
             #region Jump
@@ -177,6 +204,7 @@ namespace GoldenFur.Character
 
         private void MotionProcess()
         {
+            if(!ScoreManager.Instance.active)return;
             FixZSpeed();
             _characterController.Move(directionAttribute.direction * Time.deltaTime);
             ApplyGravity();
@@ -429,6 +457,7 @@ namespace GoldenFur.Character
         private bool _isSliding = false;
 
         private float _nextSlideCheck;
+<<<<<<< Updated upstream
 
         // public float currentTime;
         public void Slide()
@@ -436,22 +465,23 @@ namespace GoldenFur.Character
             if (PlayerState != PlayerState.Grounded || !_characterController.isGrounded)
                 return; // can't slide if regular ground state.
 
+=======
+        
+        public void Slide()
+        {
+>>>>>>> Stashed changes
             Debug.Log("Sliding");
             _isSliding = true;
-            _nextSlideCheck = motionParameters.slideDuration;
-            PlayerState = PlayerState.Sliding;
+            _nextSlideCheck = Time.time + motionParameters.slideDuration;
         }
 
         private void SlideUpdate()
         {
-            // currentTime = Time.time;
             _nextSlideCheck -= Time.deltaTime;
             if (_nextSlideCheck < 0)
             {
                 _isSliding = false;
-                PlayerState = PlayerState.Grounded;
             }
-            // Debug.Log($"Is Sliding : {_isSliding} - Next: {_nextSlideCheck} - Time: {currentTime}");
         }
 
         #endregion
