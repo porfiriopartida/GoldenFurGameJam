@@ -35,6 +35,8 @@ namespace GoldenFur.Manager
         private float _nextScoreCheck = 0;
         private float _nextHpUp = 0;
         public FloatValue TimeScale;
+        public GameObject tutorial;
+        
         private void Start()
         {
             _nextScoreCheck = scoreUpDelay;
@@ -45,6 +47,12 @@ namespace GoldenFur.Manager
             ShowMonster();
             Resume();
             _isRunning = true;
+
+            var hasTutorialRun = PlayerPrefs.GetInt(PlayerPrefKeys.Has_Tutorial_Run_Key, 0);
+            if (hasTutorialRun == 0)
+            {
+                tutorial.SetActive(true);
+            }
         }
 
 

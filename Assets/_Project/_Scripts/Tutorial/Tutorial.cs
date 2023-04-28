@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using GoldenFur.Character;
 using GoldenFur.Manager;
 using UnityEngine;
 
-namespace GoldenFur
+namespace GoldenFur.Tutorial
 {
     public class Tutorial : MonoBehaviour
     {
@@ -18,6 +15,8 @@ namespace GoldenFur
           //  player.zSpeed=0f;
             ScoreManager.Instance.active= false;
             SpawnStars.SetActive(false);
+
+            PlayerPrefs.SetInt(PlayerPrefKeys.Has_Tutorial_Run_Key, 1);
         }
 
         void Update(){
