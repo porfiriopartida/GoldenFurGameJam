@@ -82,7 +82,6 @@ namespace GoldenFur.Character
         #endregion
 
         private PlayerState _innerState;
-
         private PlayerState PlayerState
         {
             get => _innerState;
@@ -132,6 +131,7 @@ namespace GoldenFur.Character
             directionAttribute = GetComponent<DirectionAttribute>();
             _characterController = GetComponent<CharacterController>();
             // animator = GetComponent<Animator>();
+            UpdateCollider();
         }
 
         private void Update()
@@ -448,14 +448,17 @@ namespace GoldenFur.Character
             Debug.Log("Sliding");
             _isSliding = true;
             _nextSlideCheck = Time.time + motionParameters.slideDuration;
+            PlayerState = PlayerState.Sliding;
         }
 
         private void SlideUpdate()
-        {
+        { 
             _nextSlideCheck -= Time.deltaTime;
             if (_nextSlideCheck < 0)
             {
                 _isSliding = false;
+                PlayerState = PlayerState.Grounded;
+                Debug.Log($"Is Sliding : {_isSliding} - Next: {_nextSlideCheck}");
             }
         }
 
