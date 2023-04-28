@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using GoldenFur.Common;
-using GoldenFur.ScriptableObjects.Primitives;
+using GoldenFur.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

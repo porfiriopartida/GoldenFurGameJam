@@ -327,6 +327,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMesh: {fileID: 6117921281182662086}
   slidingMesh: {fileID: 5982310129553064674}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 384
   whatIsObstacle:
     serializedVersion: 2
     m_Bits: 128

@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f93a441853b4124aca7f11cdb6ccc01, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bcdfb1886a4414ba1c034d56623bc0d, type: 3}
   m_Name: Default Parameters
   m_EditorClassIdentifier: 
   height: 2
   radius: 0.5
+  center: {x: 0, y: 0, z: 0}

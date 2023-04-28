@@ -7,7 +7,5 @@ namespace GoldenFur.Character
     {
         [SerializeField]
         public Vector3 direction = Vector3.zero;
-        [NonSerialized]
-        public bool LookAtChanged;
     }
 }

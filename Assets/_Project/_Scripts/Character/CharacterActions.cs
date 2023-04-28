@@ -14,13 +14,6 @@ namespace GoldenFur.Character
         public Transform defaultMesh;
         public Transform slidingMesh;
 
-        // //Layers
-        // [SerializeField]
-        // private LayerMask whatIsGround;
-        [SerializeField] public LayerMask whatIsObstacle;
-
-        [Header("Empty object checkers")] [SerializeField]
-
         //Layers
         [SerializeField]
         private LayerMask whatIsGround;
@@ -32,6 +25,7 @@ namespace GoldenFur.Character
 
         private Transform frontChecker;
 
+        [Header("Empty object checkers")] 
         [SerializeField] private Transform slidingFrontChecker;
         [SerializeField] private Transform characterGroundChecker;
 
@@ -101,6 +95,7 @@ namespace GoldenFur.Character
 
                 // Debug.Log($"Setting player state. from {this._innerState} to {value}");
                 this._innerState = value;
+                UpdateCollider();
             }
         }
 
@@ -186,7 +181,7 @@ namespace GoldenFur.Character
 
         private void MotionProcess()
         {
-            if(!ScoreManager.Instance.active)return;
+            //if(!ScoreManager.Instance.active)return;
             FixZSpeed();
             _characterController.Move(directionAttribute.direction * Time.deltaTime);
             ApplyGravity();
