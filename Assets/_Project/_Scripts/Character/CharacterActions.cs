@@ -11,8 +11,8 @@ namespace GoldenFur.Character
     public class CharacterActions : MonoBehaviour
     {
 
-        public Transform defaultMesh;
-        public Transform slidingMesh;
+        public Animator defaultMesh;
+        
 
         //Layers
         [SerializeField]
@@ -107,13 +107,13 @@ namespace GoldenFur.Character
             {
                 case PlayerState.Sliding:
                     param = motionParameters.slidingCollisionParameters;
-                    slidingMesh.gameObject.SetActive(true);
-                    defaultMesh.gameObject.SetActive(false);
+                   // slidingMesh.gameObject.SetActive(true);
+                  //  defaultMesh.gameObject.SetActive(false);
                     break;
                 default:
                     param = motionParameters.defaultCollisionParameters;
-                    slidingMesh.gameObject.SetActive(false);
-                    defaultMesh.gameObject.SetActive(true);
+                   // slidingMesh.gameObject.SetActive(false);
+                   // defaultMesh.gameObject.SetActive(true);
                     break;
             }
 
@@ -124,7 +124,7 @@ namespace GoldenFur.Character
 
         private void Start()
         {
-            slidingMesh.gameObject.SetActive(false);
+            //slidingMesh.gameObject.SetActive(false);
             defaultMesh.gameObject.SetActive(true);
             _activeLane = Lane.Center;
             // mainCamera = Camera.main;
@@ -449,6 +449,7 @@ namespace GoldenFur.Character
             _isSliding = true;
             _nextSlideCheck = motionParameters.slideDuration;
             PlayerState = PlayerState.Sliding;
+            defaultMesh.SetBool("IsSlide", true);
         }
 
         private void SlideUpdate()
@@ -458,6 +459,7 @@ namespace GoldenFur.Character
             {
                 _isSliding = false;
                 PlayerState = PlayerState.Grounded;
+                defaultMesh.SetBool("IsSlide", false);
             }
             // Debug.Log($"Is Sliding : {_isSliding} - Next: {_nextSlideCheck}");
         }

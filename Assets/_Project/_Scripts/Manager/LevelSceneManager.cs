@@ -111,7 +111,7 @@ namespace GoldenFur.Manager
         {
             if (ScoreManager.Instance.currentScore >= winScore)
             {
-                GameOver(true);
+                //GameOver(true);
             }
         }
 
