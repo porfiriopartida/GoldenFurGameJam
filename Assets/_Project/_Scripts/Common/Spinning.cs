@@ -1,9 +1,9 @@
-using GoldenFur.ScriptableObjects;
+using GoldenFur.ScriptableObjects.Primitives;
 using UnityEngine;
 
 namespace GoldenFur.Common
 {
-    public class Spinning : DirtableSo
+    public class Spinning : MonoBehaviour
     {
         public FloatValue speed;
         public Transform meshTransform;

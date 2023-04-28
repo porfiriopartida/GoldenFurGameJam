@@ -1,4 +1,5 @@
 ﻿using GoldenFur.Manager;
+using GoldenFur.ScriptableObjects;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace GoldenFur.Utils
 {
     public class GoldenFurMenuUtils : UnityEditor.Editor
     {
+        public static WashingMachine washingMachine;
+        
         [MenuItem( "GoldenFur/ResetTutorial" )]
         public static void ResetTutorial()
         {

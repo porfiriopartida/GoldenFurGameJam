@@ -1,6 +1,7 @@
 using System;
 using GoldenFur.Manager;
 using GoldenFur.ScriptableObjects;
+using GoldenFur.ScriptableObjects.Primitives;
 using UnityEngine;
 using UnityEngine.UI;
 

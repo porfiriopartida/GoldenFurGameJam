@@ -3,6 +3,7 @@ using GoldenFur.Common;
 using GoldenFur.Event;
 using GoldenFur.Manager;
 using GoldenFur.ScriptableObjects;
+using GoldenFur.ScriptableObjects.Primitives;
 using UnityEngine;
 
 namespace GoldenFur.Character

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996d52b8f242433ba51de0efadd2f31b, type: 3}
+  m_Name: WashingMachine
+  m_EditorClassIdentifier: 
+  laundry:
+  - {fileID: 11400000, guid: 9dc79949640b78b4fb1bb6f513ff8904, type: 2}
+  - {fileID: 11400000, guid: 3e5bfc89154e1c347b25aa41c88d1d08, type: 2}
+  - {fileID: 11400000, guid: 90b6f4f05beb2ad47acb951e58955b5b, type: 2}
+  - {fileID: 11400000, guid: 0e21bb00d9d72f944b57ee4e0bdb8944, type: 2}

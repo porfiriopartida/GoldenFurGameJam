@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GoldenFur.Common;
+using UnityEngine;
 
 namespace GoldenFur.ScriptableObjects
 {

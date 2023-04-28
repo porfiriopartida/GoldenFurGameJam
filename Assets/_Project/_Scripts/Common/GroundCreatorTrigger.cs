@@ -1,7 +1,7 @@
 using GoldenFur.Manager;
 using UnityEngine;
 
-namespace GoldenFur.ScriptableObjects
+namespace GoldenFur.Common
 {
     public class GroundCreatorTrigger : MonoBehaviour
     {
