@@ -11,7 +11,7 @@ namespace GoldenFur.Common
 
         private void Start()
         {
-            GetComponent<Rigidbody>().velocity = dir;
+            GetComponent<Rigidbody>().velocity = dir * speed.value;
         }
     }
 }

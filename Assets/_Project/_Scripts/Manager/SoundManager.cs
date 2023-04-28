@@ -67,14 +67,14 @@ namespace GoldenFur.Manager
         public void UpdateMusicVolume()
         {
             backgroundAudioSource.volume = MusicVolume.value * MasterVolume.value;
-            Debug.Log($"UpdateMusicVolume: {backgroundAudioSource.volume}");
+            // Debug.Log($"UpdateMusicVolume: {backgroundAudioSource.volume}");
         }
 
         //SFX have multiple sources.
         public void UpdateSfxVolume(AudioSource src)
         {
             src.volume = SFXVolume.value * MasterVolume.value;
-            Debug.Log($"UpdateSfxVolume: {src.volume}");
+            // Debug.Log($"UpdateSfxVolume: {src.volume}");
         }
 
         public void PlayBackgroundMusic(AudioClip clip)

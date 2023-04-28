@@ -36,13 +36,13 @@ namespace GoldenFur.Manager
         private float _nextHpUp = 0;
         public FloatValue TimeScale;
         public GameObject tutorial;
-        public GameObject playerReference;
+        private bool _isRunning;
+        private float _originalTimeScale;
+        public Transform fragmentStorage;
 
         private void Start()
         {
             _nextScoreCheck = scoreUpDelay;
-            
-            //TODO: Check if order of execution affects this (ScoreManager must load before scene manager)
             //Reset score and coins
             ScoreManager.Instance.ResetScore();
             ShowMonster();
@@ -55,9 +55,6 @@ namespace GoldenFur.Manager
                 tutorial.SetActive(true);
             }
         }
-
-
-        private float _originalTimeScale;
         private void Resume()
         {
             Time.timeScale = TimeScale.value;
@@ -67,7 +64,6 @@ namespace GoldenFur.Manager
             Time.timeScale = 0;
         }
 
-        private bool _isRunning;
         public void TogglePause()
         {
             _isRunning = !_isRunning;

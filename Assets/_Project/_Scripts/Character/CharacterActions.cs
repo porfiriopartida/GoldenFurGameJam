@@ -101,7 +101,7 @@ namespace GoldenFur.Character
 
         private void UpdateCollider()
         {
-            Debug.Log($"Updating Controller Collider to {_innerState}");
+            // Debug.Log($"Updating Controller Collider to {_innerState}");
             CollisionParameters param;
             switch (PlayerState)
             {
@@ -424,7 +424,12 @@ namespace GoldenFur.Character
                 LevelSceneManager.Instance.GameOver(false);
             }
             //Validate if front collision while sliding
-            else if (_isSliding && Physics.Raycast(this.slidingFrontChecker.position, Vector3.forward,
+            // else if (_isSliding && Physics.Raycast(this.slidingFrontChecker.position, Vector3.forward,
+            //     motionParameters.frontCollisionDetect, whatIsObstacle))
+            // {
+            //     LevelSceneManager.Instance.GameOver(false);
+            // }
+            if (Physics.Raycast(this.slidingFrontChecker.position, Vector3.forward,
                 motionParameters.frontCollisionDetect, whatIsObstacle))
             {
                 LevelSceneManager.Instance.GameOver(false);

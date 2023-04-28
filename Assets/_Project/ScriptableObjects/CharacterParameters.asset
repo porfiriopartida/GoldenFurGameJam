@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8581773dc3f34e37971491618fb5d1f4, type: 3}
   m_Name: CharacterParameters
   m_EditorClassIdentifier: 
-  runSpeed: 30
-  laneSwapSpeed: 20
-  laneSwapThreshold: 0.5
-  jumpSpeed: 12
+  runSpeed: 20
+  laneSwapSpeed: 7
+  laneSwapThreshold: 0.2
+  jumpSpeed: 14
   jumpingRequiresGround: 1
-  goingUpGravity: -40
+  goingUpGravity: -35
   apexGravity: -60
-  peakReachedFallingGravity: -10
+  peakReachedFallingGravity: -40
   heightPeakThreshold: 0.1
-  coyoteFactor: 0.1
-  bufferedJump: 0.05
+  coyoteFactor: 0.15
+  bufferedJump: 0.1
   slideDuration: 0.5
-  frontCollisionDetect: 0.5
+  frontCollisionDetect: 0.35
   defaultCollisionParameters: {fileID: 11400000, guid: d4c77c9c75549a943a3e9766f49a217d, type: 2}
   slidingCollisionParameters: {fileID: 11400000, guid: 69570c962574dd44abc54c41ac1975b7, type: 2}
