@@ -271,6 +271,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2028809461}
     m_Modifications:
     - target: {fileID: 2446082544164086408, guid: 8901d5557547fc746a48d8837aebe965, type: 3}
+      propertyPath: tutorial
+      value: 
+      objectReference: {fileID: 1683640568}
+    - target: {fileID: 2446082544164086408, guid: 8901d5557547fc746a48d8837aebe965, type: 3}
       propertyPath: winScore
       value: 30000
       objectReference: {fileID: 0}
@@ -3556,7 +3560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &967397128
 Transform:
   m_ObjectHideFlags: 0
