@@ -2823,7 +2823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3294949839110831788, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
       propertyPath: m_SlopeLimit
-      value: 70
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3294949839110831788, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
       propertyPath: m_StepOffset
