@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 20
   laneSwapSpeed: 7
-  laneSwapThreshold: 0.2
+  laneSwapThreshold: 0.3
   jumpSpeed: 14
   jumpingRequiresGround: 1
   goingUpGravity: -35

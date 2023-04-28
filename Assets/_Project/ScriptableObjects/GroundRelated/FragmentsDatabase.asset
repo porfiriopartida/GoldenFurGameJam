@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FragmentsDatabase
   m_EditorClassIdentifier: 
   floorFragmentPrefabs:
-  - {fileID: 2148191704836620743, guid: 324532bf90e841647ae048323e3c98bc, type: 3}
-  - {fileID: 5230726434485074148, guid: 72ce17710ed98464e97ae6010c00fec1, type: 3}
-  - {fileID: 1356096244157737080, guid: ae4ba65df91a4b549a3638bd171418bc, type: 3}
+  - {fileID: 697292123743949883, guid: db84aa68e9a03de48b7cc6111ce42cce, type: 3}
+  - {fileID: 697292123743949883, guid: db84aa68e9a03de48b7cc6111ce42cce, type: 3}
+  - {fileID: 697292123743949883, guid: db84aa68e9a03de48b7cc6111ce42cce, type: 3}
   - {fileID: 697292123743949883, guid: db84aa68e9a03de48b7cc6111ce42cce, type: 3}
