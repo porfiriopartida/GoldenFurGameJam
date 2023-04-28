@@ -800,7 +800,6 @@ GameObject:
   - component: {fileID: 868923568}
   - component: {fileID: 868923567}
   - component: {fileID: 868923566}
-  - component: {fileID: 868923565}
   m_Layer: 5
   m_Name: BtnCustom
   m_TagString: Untagged
@@ -829,19 +828,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.74868774, y: -1.4335747}
   m_SizeDelta: {x: 7.191457, y: 8.432421}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &868923565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868923563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57a208769946f9a43986de00466f6ac7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NewGameLevel: CharEditor
 --- !u!114 &868923566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,8 +872,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1558692377}
-        m_TargetAssemblyTypeName: NewBehaviourScript, GoldenFur
+      - m_Target: {fileID: 1558692381}
+        m_TargetAssemblyTypeName: GoldenFur.CharEditor, GoldenFur
         m_MethodName: NewGameButton
         m_Mode: 1
         m_Arguments:
@@ -1637,6 +1623,7 @@ GameObject:
   - component: {fileID: 1558692379}
   - component: {fileID: 1558692378}
   - component: {fileID: 1558692377}
+  - component: {fileID: 1558692381}
   - component: {fileID: 1558692380}
   m_Layer: 0
   m_Name: ButtonController
@@ -1724,6 +1711,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ebba488c18d3d4aa95ca611082a5c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1558692381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558692374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9495f6cfb8678af4ab3c4d45e919806d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewGameLevel: CharEditor
 --- !u!1 &1602707420
 GameObject:
   m_ObjectHideFlags: 0
