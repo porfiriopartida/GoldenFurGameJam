@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84b0c00251f14b3e8f818b5292c1559c, type: 3}
-  m_Name: FragmentsDatabase
+  m_Name: FragmentsDatabase_1
   m_EditorClassIdentifier: 
   floorFragmentPrefabs:
   - {fileID: 697292123743949883, guid: db84aa68e9a03de48b7cc6111ce42cce, type: 3}

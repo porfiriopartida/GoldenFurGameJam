@@ -1,7 +1,9 @@
 ﻿using GoldenFur.ScriptableObjects;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEditor.TerrainTools;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GoldenFur.Editor.Editor
 {
@@ -20,8 +22,11 @@ namespace GoldenFur.Editor.Editor
 
                 foreach (var piece in go.laundry)
                 {
+                    Debug.Log($"Dirty: {piece.name}");
                     EditorUtility.SetDirty(piece);
                 }
+
+                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
             }
         }
     }
