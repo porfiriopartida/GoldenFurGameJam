@@ -1,4 +1,4 @@
-using System;
+using GoldenFur.Manager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,8 +27,13 @@ namespace GoldenFur.ScriptableObjects
         public Transform coinStorage;
         public Transform groundStorage;
         public Transform obstaclesStorage;
-        
-        
+
+        private Transform _playerReference;
+        private void Start()
+        {
+            _playerReference = LevelSceneManager.Instance.playerReference.transform;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
@@ -37,7 +42,7 @@ namespace GoldenFur.ScriptableObjects
             }
         }
 
-        public void SpawnNextFloor()
+        private void SpawnNextFloor()
         {
             var randomIndex = Random.Range(0, floorPrefabs.Length);
             var refPos = groundReference.position;
@@ -46,7 +51,12 @@ namespace GoldenFur.ScriptableObjects
             var newFloor = Instantiate(floorPrefabs[randomIndex], randomSpawnPosition, Quaternion.identity, groundStorage);
             Debug.Log("Spawning new floor");
 
-            SpawnCoins(newFloor);
+            for (var i = 0; i < 10; i++)
+            {
+                SpawnCoins(newFloor);
+            }
+
+            SpawnObstacle(newFloor);
         }
 
         private void SpawnCoins(GameObject newFloor)
@@ -54,18 +64,21 @@ namespace GoldenFur.ScriptableObjects
             var refPos = newFloor.transform.position;
 
             var randomX = xPositions[Random.Range(0, 3)]; 
-            var randomY = Random.Range(yRange.x, yRange.y); 
+            var randomY = Random.Range(yRange.x, yRange.y);
+            var randomZ = Random.Range(_playerReference.position.z, refPos.z + length);
             
-            var randomSpawnPosition = new Vector3(randomX, randomY, refPos.z + length);
+            var randomSpawnPosition = new Vector3(randomX, randomY, randomZ);
             Instantiate(coinPrefab, randomSpawnPosition, Quaternion.identity, coinStorage);
         }
 
-        private void SpawnObstacle()
+        private void SpawnObstacle(GameObject newFloor)
         {
-            var randomIndex = Random.Range(0, floorPrefabs.Length);
-            var refPos = groundReference.position;
-            var randomSpawnPosition = new Vector3(refPos.x,refPos.y, refPos.z + length);
-            Instantiate(floorPrefabs[randomIndex], randomSpawnPosition, Quaternion.identity, obstaclesStorage);
+            var refPos = newFloor.transform.position;
+            var randomIndex = Random.Range(0, obstaclesPrefab.Length);
+            var randomX = xPositions[Random.Range(0, 3)]; 
+            
+            var randomSpawnPosition = new Vector3(randomX, yRange.x, refPos.z);
+            Instantiate(obstaclesPrefab[randomIndex], randomSpawnPosition, Quaternion.identity, obstaclesStorage);
         }
     }
 }

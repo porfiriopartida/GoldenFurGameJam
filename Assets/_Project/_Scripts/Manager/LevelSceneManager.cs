@@ -36,7 +36,8 @@ namespace GoldenFur.Manager
         private float _nextHpUp = 0;
         public FloatValue TimeScale;
         public GameObject tutorial;
-        
+        public GameObject playerReference;
+
         private void Start()
         {
             _nextScoreCheck = scoreUpDelay;
