@@ -2890,7 +2890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2fe79a7a1f8ea2d4ba4f5abb5db4bf8c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1082271958561512970, guid: 2fe79a7a1f8ea2d4ba4f5abb5db4bf8c, type: 3}
       propertyPath: m_Layer
@@ -4602,6 +4602,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1677698683945012661, guid: e752d7d7899142c42b36744bebf91da5, type: 3}
   m_PrefabInstance: {fileID: 1048074273}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1062430809 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1734781229475917507, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+  m_PrefabInstance: {fileID: 2087127266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1076269053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5744,7 +5749,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMesh: {fileID: 1258823430}
-  slidingMesh: {fileID: 1258823430}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 384
@@ -7580,7 +7584,7 @@ PrefabInstance:
     - target: {fileID: 963194229, guid: 3366b00cdc9e4d9488ddd2f0655ef0e2, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1258823430}
+      objectReference: {fileID: 2087127267}
     - target: {fileID: 561959341171412761, guid: 3366b00cdc9e4d9488ddd2f0655ef0e2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9107,6 +9111,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1994443150, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: defaultMesh
+      value: 
+      objectReference: {fileID: 1062430809}
+    - target: {fileID: 1994443150, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
       propertyPath: isJumpingAction
       value: 0
       objectReference: {fileID: 0}
@@ -9114,6 +9122,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1734781229475917507, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b01560ded38460d40b2103bf032c6f28, type: 2}
     - target: {fileID: 1971630690015020544, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -9168,7 +9180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6117921280409034892, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6117921281182662087, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
       propertyPath: m_IsActive
@@ -9176,6 +9188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+--- !u!4 &2087127267 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6117921280409034891, guid: 2386d847a36e8744d903cb3eafffa91e, type: 3}
+  m_PrefabInstance: {fileID: 2087127266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2101684525
 PrefabInstance:
   m_ObjectHideFlags: 0
