@@ -5,18 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/_Project/_Scenes/Master Scenes/MenuScene.unity
-    guid: c7d585e931cb5df45aab2e58352f225d
   - enabled: 1
-    path: Assets/_Project/_Scenes/Master Scenes/GameScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/_Project/_Scenes/Master Scenes/MainMenu.unity
+    guid: f3b2228fce9981344a6493a76e3dad94
+  - enabled: 1
+    path: Assets/_Project/_Scenes/Master Scenes/CharEditor.unity
+    guid: ed2f456f8f2cc6941a4eb12bc8dbde36
   - enabled: 1
     path: Assets/_Project/_Scenes/Master Scenes/Creditos.unity
     guid: c1e6e632d3d13f7408f3baebcff0f17b
   - enabled: 1
-    path: Assets/_Project/_Scenes/Master Scenes/MainMenu.unity
-    guid: f3b2228fce9981344a6493a76e3dad94
+    path: Assets/_Project/_Scenes/Master Scenes/GameScene.unity
+    guid: 3ee7dd22ee07b6f4ab7b52fdb1526e9a
   - enabled: 1
     path: Assets/_Project/_Scenes/Master Scenes/Opciones.unity
     guid: b1ff97efa4e75234f9cba3e7a3a1aae4
